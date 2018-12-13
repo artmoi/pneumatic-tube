@@ -1,0 +1,14 @@
+.vscode
+.git/**
+.gerty/**
+.idea/**
+build/**
+logs/**
+.env
+.gitignore
+.zipignore
+*.zip
+composer.phar
+resources/assets/**
+node_modules/**
+.azure-build.yml

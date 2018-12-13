@@ -9,3 +9,6 @@ yarn.lock
 protoculture.png
 Dockerfile
 docker-compose.yml
+.azure-build.yml
+.npmrc
+.yarnrc
