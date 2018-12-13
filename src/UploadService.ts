@@ -1,8 +1,9 @@
 import _ from "lodash";
 import { Filesystem } from "./Filesystem";
 import { Upload } from "./Upload";
-import project from "../package.json";
 
+
+const project = require("../package.json");
 
 export interface Usage {
 
