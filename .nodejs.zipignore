@@ -1,5 +1,7 @@
+.vscode/**
 .vscode
 .git/**
+.git
 .gerty/**
 .idea/**
 build/**
@@ -11,4 +13,6 @@ logs/**
 composer.phar
 resources/assets/**
 node_modules/**
+node_modules
 .azure-build.yml
+*.py
