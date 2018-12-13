@@ -1,0 +1,36 @@
+jobs:
+
+- job: "build"
+
+  pool:
+    vmImage: 'Ubuntu 16.04'
+
+  steps:
+
+  - task: DownloadBuildArtifacts@0
+    displayName: "Download ArtMoi Build Tools"
+    inputs:
+      buildType: "specific"
+      project: "build-image"
+      pipeline: "artmoi.build-image"
+      buildVersionToDownload: "latestFromBranch"
+      branchName: "refs/heads/master"
+      downloadType: "single"
+      artifactName: "raw"
+      downloadPath: "$(System.ArtifactsDirectory)/build-image"
+
+  - script: "chmod +x ${SYSTEM_ARTIFACTSDIRECTORY}/build-image/raw/bin/*; source ${SYSTEM_ARTIFACTSDIRECTORY}/build-image/raw/bin/am-azure-boot;"
+    displayName: "Boot ArtMoi Build Tools"
+
+  - script: "am-nodejs-build"
+    displayName: "Build nodejs"
+
+  - task: "PublishBuildArtifacts@1"
+    inputs:
+      artifactName: "nodejs"
+      pathToPublish: '$(AM_ARTIFACT_STAGING_PATH)/nodejs'
+
+  - task: "PublishBuildArtifacts@1"
+    inputs:
+      artifactName: "variables"
+      pathToPublish: '$(AM_ARTIFACT_STAGING_PATH)/variables'
