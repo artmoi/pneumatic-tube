@@ -1,5 +1,5 @@
 {
-  "name": "pneumatic-tube",
+  "name": "@artmoi/pneumatic-tube",
   "version": "0.0.0-development",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
