@@ -12,3 +12,5 @@ docker-compose.yml
 .azure-build.yml
 .npmrc
 .yarnrc
+.nodejs.zipignore  
+tslint.json
