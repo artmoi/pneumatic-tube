@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "repository": "https://github.com/artmoi/storage",
+  "repository": "https://github.com/artmoi/pneumatic-tube",
   "author": "Alexander Trauzzi <atrauzzi@gmail.com>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
