@@ -9,10 +9,17 @@
   dependencies:
     regenerator-runtime "^0.12.0"
 
-"@types/lodash@^4.14.118", "@types/lodash@^4.14.119":
-  version "4.14.119"
-  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.119.tgz#be847e5f4bc3e35e46d041c394ead8b603ad8b39"
-  integrity sha512-Z3TNyBL8Vd/M9D9Ms2S3LmFq2sSMzahodD6rCS9V2N44HUMINb75jNkSuwAx7eo2ufqTdfOdtGQpNbieUjPQmw==
+"@types/axios@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@types/axios/-/axios-0.14.0.tgz#ec2300fbe7d7dddd7eb9d3abf87999964cafce46"
+  integrity sha1-7CMA++fX3d1+udOr+HmZlkyvzkY=
+  dependencies:
+    axios "*"
+
+"@types/lodash@^4.14.118", "@types/lodash@^4.14.120":
+  version "4.14.120"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.120.tgz#cf265d06f6c7a710db087ed07523ab8c1a24047b"
+  integrity sha512-jQ21kQ120mo+IrDs1nFNVm/AsdFxIx2+vZ347DbogHJPd/JzKNMOqU6HCYin1W6v8l5R9XSO2/e9cxmn7HAnVw==
 
 "@types/node@*":
   version "10.12.15"
@@ -43,7 +50,7 @@ arrify@^1.0.0:
   resolved "https://registry.yarnpkg.com/arrify/-/arrify-1.0.1.tgz#898508da2226f380df904728456849c1501a4b0d"
   integrity sha1-iYUI2iIm84DfkEcoRWhJwVAaSw0=
 
-axios@^0.18.0:
+axios@*, axios@0.18.0, axios@^0, axios@^0.18.0:
   version "0.18.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.18.0.tgz#32d53e4851efdc0a11993b6cd000789d70c05102"
   integrity sha1-MtU+SFHv3AoRmTts0AB4nXDAUQI=
@@ -138,7 +145,7 @@ make-error@^1.1.1:
   resolved "https://registry.yarnpkg.com/make-error/-/make-error-1.3.5.tgz#efe4e81f6db28cadd605c70f29c831b58ef776c8"
   integrity sha512-c3sIjNUow0+8swNwVpqoH4YCShKNFkMaw6oH1mNS2haDZQqkeZFlHS3dhoeEbKKmJB4vXpJucU6oH75aDYeE9g==
 
-minimist@0.0.8, minimist@^1.2.0:
+minimist@0.0.8, minimist@1.2.0, minimist@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.0.tgz#a35008b20f41383eec1fb914f4cd5df79a264284"
   integrity sha1-o1AIsg9BOD7sH7kU9M1d95omQoQ=
@@ -180,14 +187,14 @@ property-expr@^1.5.0:
   resolved "https://registry.yarnpkg.com/property-expr/-/property-expr-1.5.1.tgz#22e8706894a0c8e28d58735804f6ba3a3673314f"
   integrity sha512-CGuc0VUTGthpJXL36ydB6jnbyOf/rAHFvmVrJlH+Rg0DqqLFQGAP6hIaxD/G0OAmBJPhXDHuEJigrp0e0wFV6g==
 
-protoculture@^2.0.135:
-  version "2.0.135"
-  resolved "https://registry.yarnpkg.com/protoculture/-/protoculture-2.0.135.tgz#d68567ea3b77f6bb00a35d1165b04655b3b6a7d7"
-  integrity sha512-cKmoGnT3PYSyubq4dBgLxMVHXeUbqR4O7MR/e8hcE9UN5RtNLwdHNZWUqpeaxrakNFET9LsvDYaEqbMjaTysUg==
+protoculture@^2.0.139:
+  version "2.0.139"
+  resolved "https://registry.yarnpkg.com/protoculture/-/protoculture-2.0.139.tgz#79cff9d4feb8dbd10e8302af358bf89ab7853270"
+  integrity sha512-w/k+CD89e1z8rX0yhe/lZnQ+MwZ6fUxR1dmL5m7dlkCDrrXi8B1DtK+/G37juCo6t8iV8ZTE5/auJFtol7Lyjw==
   dependencies:
     "@types/lodash" "^4.14.118"
     "@types/yup" "^0.26.1"
-    axios "^0.18.0"
+    axios "^0"
     domready "^1.0.8"
     inversify "^5.0.1"
     lodash "^4.17.11"

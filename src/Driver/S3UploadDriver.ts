@@ -34,9 +34,11 @@ export class S3UploadDriver implements UploadDriver {
 
     private minimumPartSize = 5242880;
 
-    public constructor(
-        private uploadInitializer: S3UploadInitializer
-    ) {
+    private uploadInitializer: S3UploadInitializer;
+
+    public constructor(uploadInitializer: S3UploadInitializer) {
+        
+        this.uploadInitializer = uploadInitializer;
     }
 
     public async upload(upload: Upload, callbacks: UploadCallbacks = {}) {
@@ -63,7 +65,7 @@ export class S3UploadDriver implements UploadDriver {
 
         await _.reduce(
             s3Upload.parts,
-            async (previous, part, index) => {
+            async (previous: any, part: any, index: any) => {
 
                 await previous;
 
@@ -114,7 +116,7 @@ export class S3UploadDriver implements UploadDriver {
         }
 
         const request = axios.put(presignedUploadUri, partBytes, {
-            onUploadProgress: (progressEvent) => {
+            onUploadProgress: (progressEvent: any) => {
 
                 upload.parts[index].progress = Math.round((progressEvent.loaded * 100) / progressEvent.total);
 
@@ -151,7 +153,7 @@ export class S3UploadDriver implements UploadDriver {
 
         return _
             .range(0, data.size, this.minimumPartSize)
-            .map((start, index) => ({
+            .map((start: any, index: number) => ({
                 id: v4uuid(),
                 progress: 0,
                 index,
@@ -168,7 +170,7 @@ export class S3UploadDriver implements UploadDriver {
         s3Upload.progress = _.chain(s3Upload.parts)
             .map("progress")
             .sum()
-            .thru((sum) => Math.floor(sum / s3Upload.parts.length))
+            .thru((sum: number) => Math.floor(sum / s3Upload.parts.length))
             .value();
 
         callbacks.onProgress && callbacks.onProgress(s3Upload);

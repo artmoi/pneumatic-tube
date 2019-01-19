@@ -12,11 +12,12 @@
     "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {
-    "@types/lodash": "^4.14.119",
+    "@types/axios": "^0.14.0",
+    "@types/lodash": "^4.14.120",
     "@types/uuid": "^3.4.4",
     "axios": "^0.18.0",
     "lodash": "^4.17.11",
-    "protoculture": "^2.0.135",
+    "protoculture": "^2.0.139",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
@@ -24,6 +25,9 @@
     "typescript": "^3.1.6"
   },
   "resolutions": {
-    "minimist": "1.2.0"
+    "minimist": "1.2.0",
+    "axios": "0.18.0",
+    "lodash": "4.17.11",
+    "@types/lodash": "4.14.120"
   }
 }
