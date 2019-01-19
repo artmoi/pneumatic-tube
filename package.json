@@ -1,19 +1,23 @@
 {
-  "name": "@artmoi/artmoi-js-sdk",
+  "name": "@artmoi/pneumatic-tube",
   "version": "0.0.0-development",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "repository": "https://github.com/artmoi/artmoi-js-sdk",
+  "repository": "https://github.com/artmoi/pneumatic-tube",
   "author": "Alexander Trauzzi <atrauzzi@gmail.com>",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "semantic-release": "semantic-release",
-    "build": "tsc"
+    "build": "tsc",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {
-    "@types/yup": "^0.26.5",
+    "@types/lodash": "^4.14.119",
+    "@types/uuid": "^3.4.4",
+    "axios": "^0.18.0",
+    "lodash": "^4.17.11",
     "protoculture": "^2.0.135",
-    "yup": "^0.26.7"
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "ts-node": "^3.0.2",
