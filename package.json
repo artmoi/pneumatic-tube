@@ -12,7 +12,6 @@
     "travis-deploy-once": "travis-deploy-once"
   },
   "dependencies": {
-    "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.120",
     "@types/uuid": "^3.4.4",
     "axios": "^0.18.0",
