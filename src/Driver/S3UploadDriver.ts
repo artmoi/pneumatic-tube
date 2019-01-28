@@ -9,6 +9,7 @@ import { Upload } from "../Upload";
 
 interface S3Upload extends Upload {
     uploadId?: string;
+    key?: string;
     metadata: any;
     parts: S3UploadPart[];
 }
@@ -97,6 +98,8 @@ export class S3UploadDriver implements UploadDriver {
             },
         });
 
+        // note: The server generates a new id for us.
+        s3Upload.key = multipartUploadData.key;
         s3Upload.uploadId = multipartUploadData.uploadId;
         
         multipartUploadData.presignedUploadUris.forEach((uri: string, index: number) =>
