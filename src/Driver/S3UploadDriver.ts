@@ -50,6 +50,8 @@ export class S3UploadDriver implements UploadDriver {
         await this.complete(s3Upload);
 
         callbacks.onComplete && callbacks.onComplete(upload);
+
+        return s3Upload;
     }
 
     private async parallelUpload(s3Upload: S3Upload, callbacks: UploadCallbacks = {}) {

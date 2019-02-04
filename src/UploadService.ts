@@ -32,7 +32,7 @@ export class UploadService {
         upload.filesystem = filesystem;
         upload.metadata.uploaderVersion = project.version;
 
-        await this.filesystems[filesystem]
+        return await this.filesystems[filesystem]
             .uploadDriver
             .upload(upload, callbacks);
     }
