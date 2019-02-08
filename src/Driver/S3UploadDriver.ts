@@ -47,11 +47,11 @@ export class S3UploadDriver implements UploadDriver {
         const s3Upload = await this.initialize(upload);
 
         await this.serialUpload(s3Upload, callbacks);
-        await this.complete(s3Upload);
+        const completedS3Upload = await this.complete(s3Upload);
 
-        callbacks.onComplete && callbacks.onComplete(upload);
+        callbacks.onComplete && callbacks.onComplete(completedS3Upload);
 
-        return s3Upload;
+        return completedS3Upload;
     }
 
     private async parallelUpload(s3Upload: S3Upload, callbacks: UploadCallbacks = {}) {
@@ -100,7 +100,7 @@ export class S3UploadDriver implements UploadDriver {
             },
         });
 
-        // note: The server generates a new id for us.
+        // note: The server generates a new key for us.
         s3Upload.key = multipartUploadData.key;
         s3Upload.uploadId = multipartUploadData.uploadId;
         
@@ -147,7 +147,7 @@ export class S3UploadDriver implements UploadDriver {
             }
         });
 
-        await this.uploadInitializer.call("s3.store-multipart-upload", {
+        return await this.uploadInitializer.call<S3Upload>("s3.store-multipart-upload", {
             data: {
                 s3Upload,
             },
