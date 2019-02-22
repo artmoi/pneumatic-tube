@@ -133,8 +133,15 @@ export class S3UploadDriver implements UploadDriver {
         });
 
         const response = await request;
+        const etag = _.get(response, "headers.etag");
 
-        upload.parts[index].eTag = response.headers["etag"];
+        if (!etag) {
+
+            // note: If you're getting this error, you may need the following (or equivalent) S3 CORS policy: <ExposeHeader>ETag</ExposeHeader>
+            throw new Error("Response from storage missing etag.");
+        }
+
+        upload.parts[index].eTag = etag;
     }
 
     private async complete(s3Upload: S3Upload) {
