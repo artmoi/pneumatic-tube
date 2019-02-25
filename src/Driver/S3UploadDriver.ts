@@ -42,9 +42,9 @@ export class S3UploadDriver implements UploadDriver {
         this.uploadInitializer = uploadInitializer;
     }
 
-    public async upload(upload: Upload, callbacks: UploadCallbacks = {}) {
+    public async upload(upload: Upload, callbacks: UploadCallbacks = {}, scoped = false) {
 
-        const s3Upload = await this.initialize(upload);
+        const s3Upload = await this.initialize(upload, scoped);
 
         await this.serialUpload(s3Upload, callbacks);
         const completedS3Upload = await this.complete(s3Upload);
@@ -80,7 +80,7 @@ export class S3UploadDriver implements UploadDriver {
         );
     }
 
-    private async initialize(upload: Upload): Promise<S3Upload> {
+    private async initialize(upload: Upload, scoped: boolean): Promise<S3Upload> {
 
         const s3Upload: S3Upload = {
             ...upload,
@@ -97,6 +97,9 @@ export class S3UploadDriver implements UploadDriver {
         const multipartUploadData = await this.uploadInitializer.call("s3.create-multipart-upload", {
             data: {
                 s3Upload,
+            },
+            params: {
+                scoped,
             },
         });
 

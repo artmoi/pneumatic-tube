@@ -27,13 +27,13 @@ export class UploadService {
     ) {
     }
 
-    public async upload(upload: Upload, callbacks?: UploadCallbacks, filesystem = this.defaultFilesystem) {
+    public async upload(upload: Upload, callbacks?: UploadCallbacks, filesystem = this.defaultFilesystem, scoped = false) {
 
         upload.filesystem = filesystem;
         upload.metadata.uploaderVersion = project.version;
 
         return await this.filesystems[filesystem]
             .uploadDriver
-            .upload(upload, callbacks);
+            .upload(upload, callbacks, scoped);
     }
 }
