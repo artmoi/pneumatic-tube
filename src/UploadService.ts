@@ -19,6 +19,13 @@ export interface UploadCallbacks {
     onFileError?(upload: Upload): void;
 }
 
+export interface UploadOptions {
+
+    callbacks?: UploadCallbacks;
+    scoped?: boolean;
+    filesystem?: string;
+}
+
 export class UploadService {
 
     public constructor(
@@ -27,7 +34,11 @@ export class UploadService {
     ) {
     }
 
-    public async upload(upload: Upload, callbacks?: UploadCallbacks, filesystem = this.defaultFilesystem, scoped = false) {
+    public async upload(upload: Upload, options?: UploadOptions) {
+
+        const filesystem = options.filesystem || this.defaultFilesystem
+        const callbacks = options.callbacks || {};
+        const scoped = options.scoped || false;
 
         upload.filesystem = filesystem;
         upload.metadata.uploaderVersion = project.version;
