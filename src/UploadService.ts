@@ -34,7 +34,7 @@ export class UploadService {
     ) {
     }
 
-    public async upload(upload: Upload, options?: UploadOptions) {
+    public async upload(upload: Upload, options: UploadOptions = {}) {
 
         const filesystem = options.filesystem || this.defaultFilesystem
         const callbacks = options.callbacks || {};
