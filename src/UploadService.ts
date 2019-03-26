@@ -1,6 +1,7 @@
 import _ from "lodash";
 import { Filesystem } from "./Filesystem";
 import { Upload } from "./Upload";
+import { v4 as v4uuid } from "uuid";
 
 
 const project = require("../package.json");
@@ -21,9 +22,11 @@ export interface UploadCallbacks {
 
 export interface UploadOptions {
 
+    fileName?: string;
     callbacks?: UploadCallbacks;
     scoped?: boolean;
     filesystem?: string;
+    mimeType?: string;
 }
 
 export class UploadService {
@@ -34,17 +37,34 @@ export class UploadService {
     ) {
     }
 
-    public async upload(upload: Upload, options: UploadOptions = {}) {
+    public async upload(data: Blob | File, options: UploadOptions = {}) {
 
-        const filesystem = options.filesystem || this.defaultFilesystem
         const callbacks = options.callbacks || {};
         const scoped = options.scoped || false;
 
-        upload.filesystem = filesystem;
-        upload.metadata.uploaderVersion = project.version;
+        const upload = this.createUpload(data, options);
 
-        return await this.filesystems[filesystem]
+        return await this.filesystems[upload.filesystem]
             .uploadDriver
             .upload(upload, callbacks, scoped);
+    }
+
+    private createUpload(data: Blob | File, options: UploadOptions = {}): Upload {
+
+        const filesystem = options.filesystem || this.defaultFilesystem
+        const name = options.fileName || (data as File).name || undefined;
+        const mimeType = options.mimeType || data.type || undefined;
+
+        return {
+            id: v4uuid(),
+            size: data.size,
+            filesystem: filesystem,
+            metadata: {
+                uploaderVersion: project.version,
+            },
+            data,
+            name,
+            mimeType,
+        };
     }
 }

@@ -2,7 +2,7 @@
 
 export interface Metadata {
 
-    [key: string]: string;
+    [key: string]: string | number;
 
     uploaderVersion?: string;
 }
@@ -10,7 +10,7 @@ export interface Metadata {
 export interface Upload {
 
     id: string;
-    name: string;
+    name?: string;
     mimeType: string;
     size: number;
 

@@ -10,7 +10,6 @@ import { Upload } from "../Upload";
 interface S3Upload extends Upload {
     uploadId?: string;
     key?: string;
-    metadata: any;
     parts: S3UploadPart[];
 }
 
