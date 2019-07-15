@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+        nodejs: 10
+  pre_build:
+    commands:
+      - ls -l
+  build:
+    commands:
+      - yarn install
+      - yarn build
+      - cd lib; tar -cvf ../pneumatic-tube.tar *; cd ../
+      - gzip pneumatic-tube.tar
+      - ls -l
+artifacts:
+  type: gzip
+  files:
+    - pneumatic-tube.tar
