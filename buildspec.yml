@@ -11,9 +11,9 @@ phases:
       - yarn install
       - yarn build
       - cd lib; tar -cvf ../pneumatic-tube.tar *; cd ../
-      #- gzip pneumatic-tube.tar
+      - gzip pneumatic-tube.tar
       - ls -l
 artifacts:
   type: gzip
   files:
-    - pneumatic-tube.tar
+    - pneumatic-tube.tar.gz
