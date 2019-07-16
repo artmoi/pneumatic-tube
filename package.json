@@ -27,5 +27,10 @@
     "axios": "0.18.0",
     "lodash": "4.17.11",
     "@types/lodash": "4.14.120"
+  },
+  "bit": {
+    "env": {},
+    "componentsDefaultDirectory": "components/{name}",
+    "packageManager": "npm"
   }
 }
