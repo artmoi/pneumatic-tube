@@ -1,6 +1,6 @@
 import _ from "lodash";
 import axios from "axios";
-import { ApiConnection, ConnectionConfiguration, ServerRoute } from "protoculture";
+import { ApiConnection, ConnectionConfiguration, ServerRoute } from "@artmoi/artmoi-js";
 import { v4 as v4uuid } from "uuid";
 import { UploadDriver } from "../UploadDriver";
 import { UploadCallbacks } from "../UploadService";
