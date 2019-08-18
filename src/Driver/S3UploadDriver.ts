@@ -79,7 +79,7 @@ export class S3UploadDriver implements UploadDriver {
         );
     }
 
-    private async initialize(upload: Upload, scoped: boolean): Promise<S3Upload> {
+    private async initialize(upload: Upload, scoped: boolean, params?: any): Promise<S3Upload> {
 
         const s3Upload: S3Upload = {
             ...upload,
@@ -98,6 +98,7 @@ export class S3UploadDriver implements UploadDriver {
                 s3Upload,
             },
             params: {
+                ...params,
                 scoped,
             },
         });
