@@ -1,6 +1,6 @@
 import _ from "lodash";
 import axios from "axios";
-import { ApiConnection, ConnectionConfiguration, ServerRoute } from "protoculture";
+import { ApiConnection, ConnectionConfiguration, ServerRoute } from "@artmoi/artmoi-js";
 import { v4 as v4uuid } from "uuid";
 import { UploadDriver } from "../UploadDriver";
 import { UploadCallbacks } from "../UploadService";
@@ -79,7 +79,7 @@ export class S3UploadDriver implements UploadDriver {
         );
     }
 
-    private async initialize(upload: Upload, scoped: boolean): Promise<S3Upload> {
+    private async initialize(upload: Upload, scoped: boolean, params?: any): Promise<S3Upload> {
 
         const s3Upload: S3Upload = {
             ...upload,
@@ -98,6 +98,7 @@ export class S3UploadDriver implements UploadDriver {
                 s3Upload,
             },
             params: {
+                ...params,
                 scoped,
             },
         });
